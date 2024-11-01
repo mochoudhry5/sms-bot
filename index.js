@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
@@ -6,10 +7,10 @@ const twilio = require('twilio');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const accountSid = 'AC99dc52f9914bbe8c4d7aa1730296f057';
-const authToken = '81e079499f6fd1eb5cf38cb6d739dda4';
+const accountSid = process.env.ACCOUNT;
+const authToken = process.env.AUTH;
 const client = new twilio(accountSid, authToken);
-const openaiApiKey = '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';
+const openaiApiKey = process.env.API_KEY;
 
 // Trigger word here
 const TRIGGER_WORD = "@bot";
